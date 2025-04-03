@@ -32,7 +32,6 @@ app.MapPost("/send", (Message message) =>
 {
     
 
-
     return Results.Ok(new
     {
         status = "Message sent successfully."
