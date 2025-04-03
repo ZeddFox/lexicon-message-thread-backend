@@ -1,0 +1,6 @@
+@lexicon_message_thread_backend_HostAddress = http://localhost:5140
+
+GET {{lexicon_message_thread_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
