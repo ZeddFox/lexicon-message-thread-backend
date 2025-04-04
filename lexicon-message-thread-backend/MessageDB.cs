@@ -1,12 +1,12 @@
-﻿namespace lexicon_message_thread_backend;
-using Microsoft.EntityFrameworkCore;
-
-
-public class MessageDB : DbContext
+﻿using Microsoft.EntityFrameworkCore;
+namespace lexicon_message_thread_backend
 {
-    public MessageDB(DbContextOptions<MessageDB> options) : base(options) { }
+    public class MessageDB : DbContext
+    {
+        public MessageDB(DbContextOptions<MessageDB> options) : base(options) { }
 
-    public DbSet<HttpModels.Message> Messages => Set<HttpModels.Message>();
+        public DbSet<HttpModels.Message> Messages { get; set; }
 
+    }
 }
 

@@ -1,8 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using lexicon_message_thread_backend.HttpModels;
 using lexicon_message_thread_backend;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<MessageDB>(options =>
+    options.UseSqlite("DataSource=messages.db")
+    );
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -27,23 +32,5 @@ app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-
-app.MapPost("/send", (Message message) =>
-{
-    
-
-    return Results.Ok(new
-    {
-        status = "Message sent successfully."
-    });
-});
-
-app.MapGet("/update", () =>
-{
-    return Results.Ok(new
-    {
-        //messageList = messageList
-    });
-});
 
 app.Run();
