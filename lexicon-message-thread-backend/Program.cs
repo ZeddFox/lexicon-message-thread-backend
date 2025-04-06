@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using lexicon_message_thread_backend.HttpModels;
 using lexicon_message_thread_backend;
 using Microsoft.EntityFrameworkCore;
 
