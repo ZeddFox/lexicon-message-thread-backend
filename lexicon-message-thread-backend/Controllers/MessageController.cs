@@ -23,7 +23,20 @@ namespace lexicon_message_thread_backend.Controllers
         [HttpPost]
         public IResult Write(Message message)
         {
-            message.MessageID = 5050;
+            var messages = _messageDB.Messages.ToList();
+            int currentID = 0;
+
+            foreach (var item in messages)
+            {
+                if (currentID < item.MessageID)
+                {
+                    currentID = item.MessageID;
+                }
+            }
+
+            currentID++;
+
+            message.MessageID = currentID;
             message.SendDate = DateTime.Now;
 
             try
@@ -36,9 +49,9 @@ namespace lexicon_message_thread_backend.Controllers
                     status = "Message sent successfully."
                 });
             }
-            catch
+            catch(Exception ex)
             {
-                return Results.Conflict();
+                return Results.Conflict(ex.ToString());
             }
         }
     }
